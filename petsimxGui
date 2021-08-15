@@ -1,0 +1,302 @@
+local Player = game:GetService("Players").LocalPlayer
+local PlayerGui = Player:WaitForChild("PlayerGui")
+local Character = Player.Character or Player:CharacterAdded()
+local CoreGui = game:GetService("CoreGui")
+
+-- Making Guis
+local ScreenGui = Instance.new("ScreenGui", CoreGui)
+local Main = Instance.new("Frame", ScreenGui)
+local Tabs = Instance.new("Frame", Main)
+local Home = Instance.new("Frame", Main)
+local CreditsHome = Instance.new("Frame", Main)
+local HomeTab = Instance.new("TextButton", Tabs)
+local CreditsTab = Instance.new("TextButton", Tabs)
+local GuiName = Instance.new("TextLabel", Main)
+local MainTab = Instance.new("TextButton", Main)
+local MainClose = Instance.new("TextButton", Main)
+local Button = Instance.new("TextButton", ScreenGui)
+local Version = Instance.new("TextLabel", Main)
+
+-- Home Guis
+local SpeedText = Instance.new("TextLabel", Home)
+local SpeedBox = Instance.new("TextBox", Home)
+local ApplySpeed = Instance.new("TextButton", Home)
+
+local TeleportText = Instance.new("TextLabel", Home)
+local BoolTeleport = Instance.new("TextButton", Home)
+
+-- Credits Guis
+local Developer = Instance.new("TextLabel", CreditsHome)
+local me = Instance.new("TextLabel", CreditsHome)
+
+-- Gui Scripting
+local randomName = game:GetService("HttpService"):GenerateGUID(false)
+
+local UIpadding = Instance.new("UIPadding", Tabs)
+UIpadding.PaddingLeft = UDim.new(0.1,0)
+UIpadding.PaddingTop = UDim.new(0.035,0)
+
+local UIgridlayout = Instance.new("UIGridLayout", Tabs)
+UIgridlayout.CellSize = UDim2.new(0.87,0, 0.1,0)
+UIgridlayout.CellPadding = UDim2.new(0,0, 0.03,0)
+
+local UIcorner1 = Instance.new("UICorner", Main)
+UIcorner1.CornerRadius = UDim.new(0.05,0)
+local UIcorner2 = Instance.new("UICorner", Tabs)
+UIcorner2.CornerRadius = UDim.new(0.06,0)
+
+ScreenGui.Name = randomName
+
+-- Version
+Version.Name = "Version"
+Version.Text = "Gui v1"
+Version.Font = Enum.Font.FredokaOne
+Version.RichText = true
+Version.TextScaled = true
+Version.BackgroundTransparency = 1
+Version.TextColor3 = Color3.new(1,1,1)
+Version.Size = UDim2.new(0.9,0, 0.03,0)
+Version.Position = UDim2.new(0.04,0, 0.96,0)
+Version.TextXAlignment = Enum.TextXAlignment.Left
+
+-- Button
+local newCorner = Instance.new("UICorner", Button)
+newCorner.CornerRadius = UDim.new(0.3,0)
+
+Button.BackgroundColor3 = Color3.fromRGB(103, 95, 113)
+Button.BorderSizePixel = 0
+Button.Text = "Open"
+Button.TextColor3 = Color3.new(1,1,1)
+Button.Font = Enum.Font.FredokaOne
+Button.TextScaled = true
+Button.RichText = true
+Button.AnchorPoint = Vector2.new(1,0)
+Button.Position = UDim2.new(0.97,0, 0.96,0)
+Button.Size = UDim2.new(0.12,0, 0.025,0)
+Button.Visible = false
+
+-- MainButtons
+MainTab.Name = "MainTab"
+MainTab.Text = "_"
+MainTab.TextColor3 = Color3.new(1,1,1)
+MainTab.Size = UDim2.new(0.05,0, 0.08,0)
+MainTab.BackgroundTransparency = 1
+MainTab.TextScaled = true
+MainTab.RichText = true
+MainTab.Font = Enum.Font.FredokaOne
+MainTab.Position = UDim2.new(0.85,0, 0,0)
+
+MainClose.Name = "MainClose"
+MainClose.Text = "X"
+MainClose.TextColor3 = Color3.new(1,0,0)
+MainClose.Size = UDim2.new(0.05,0, 0.08,0)
+MainClose.BackgroundTransparency = 1
+MainClose.TextScaled = true
+MainClose.RichText = true
+MainClose.Font = Enum.Font.FredokaOne
+MainClose.Position = UDim2.new(0.92,0, 0.02,0)
+
+-- MainFrame
+Main.Name = "Main"
+Main.AnchorPoint = Vector2.new(0.5,0.5)
+Main.Size = UDim2.new(0.47,0,0.4,0)
+Main.Position = UDim2.new(0.5,0, 0.5,0)
+Main.BackgroundColor3 = Color3.fromRGB(103, 95, 113)
+Main.BorderSizePixel = 0
+
+-- GuiNameText
+GuiName.Name = "GuiName"
+GuiName.BackgroundTransparency = 1
+GuiName.RichText = true
+GuiName.TextScaled = true
+GuiName.Font = Enum.Font.FredokaOne
+GuiName.Size = UDim2.new(1,0, 0.09,0)
+GuiName.TextColor3 = Color3.new(1,1,1)
+GuiName.TextXAlignment = Enum.TextXAlignment.Left
+GuiName.Position = UDim2.new(0.02,0,0,0)
+GuiName.Text = "Pet Simulator X! Exploit GUI" 
+
+-- TabsFrame
+Tabs.Name = "Tabs"
+Tabs.BackgroundColor3 = Color3.fromRGB(90, 85, 96)
+Tabs.Size = UDim2.new(0.23,0, 0.86,0)
+Tabs.Position = UDim2.new(0.03,0, 0.1,0)
+
+-- HomeFrame
+local c = UIcorner2:Clone()
+c.Parent = Home
+
+Home.Name = "Home"
+Home.BackgroundColor3 = Color3.fromRGB(90, 85, 96)
+Home.Size = UDim2.new(0.7,0, 0.86,0)
+Home.Position = UDim2.new(0.28,0, 0.1,0)
+
+-- CreditsHomeFrame
+local c3 = UIcorner2:Clone()
+c3.Parent = CreditsHome
+
+CreditsHome.Name = "CreditsHome"
+CreditsHome.BackgroundColor3 = Color3.fromRGB(90, 85, 96)
+CreditsHome.Size = UDim2.new(0.7,0, 0.86,0)
+CreditsHome.Position = UDim2.new(0.28,0, 0.1,0)
+CreditsHome.Visible = false
+
+-- CreditsTab&HomeTab
+local c1 = UIcorner2:Clone()
+c1.Parent = HomeTab
+c1.CornerRadius = UDim.new(0.2,0)
+local c2 = UIcorner2:Clone()
+c2.Parent = CreditsTab
+c2.CornerRadius = UDim.new(0.2,0)
+
+HomeTab.Name = "HomeTab"
+HomeTab.Text = "Home"
+HomeTab.Font = Enum.Font.FredokaOne
+HomeTab.RichText = true
+HomeTab.TextScaled = true
+HomeTab.TextColor3 = Color3.new(1,1,1)
+
+CreditsTab.Name = "CreditsTab"
+CreditsTab.Text = "Credits"
+CreditsTab.Font = Enum.Font.FredokaOne
+CreditsTab.RichText = true
+CreditsTab.TextScaled = true
+CreditsTab.TextColor3 = Color3.new(1,1,1)
+
+-- Home Buttons
+local c4 = UIcorner2:Clone()
+c4.Parent = ApplySpeed
+c4.CornerRadius = UDim.new(0.2,0)
+c4:Clone().Parent = BoolTeleport
+
+SpeedText.Name = "SpeedText"
+SpeedText.Text = "Speed :"
+SpeedText.BackgroundTransparency = 1
+SpeedText.Font = Enum.Font.FredokaOne
+SpeedText.RichText = true
+SpeedText.TextScaled = true
+SpeedText.TextColor3 = Color3.new(1,1,1)
+SpeedText.TextXAlignment = Enum.TextXAlignment.Left
+SpeedText.Size = UDim2.new(0.4,0, 0.1,0)
+SpeedText.Position = UDim2.new(0.05,0, 0.07,0)
+
+SpeedBox.Name = "SpeedBox"
+SpeedBox.Size = UDim2.new(0.3,0, 0.1,0)
+SpeedBox.Position = UDim2.new(0.05,0, 0.2,0)
+SpeedBox.PlaceholderText = "Your Speed " .. tostring(Character:WaitForChild("Humanoid").WalkSpeed)
+SpeedBox.Text = ""
+SpeedBox.ClearTextOnFocus = false
+SpeedBox.TextColor3 = Color3.new(1,1,1)
+SpeedBox.PlaceholderColor3 = Color3.new(1,1,1)
+SpeedBox.BorderSizePixel = 0
+SpeedBox.TextScaled = true
+SpeedBox.RichText = true
+SpeedBox.Font = Enum.Font.FredokaOne
+
+ApplySpeed.Name = "ApplySpeed"
+ApplySpeed.Size = UDim2.new(0.27,0, 0.1,0)
+ApplySpeed.Text = "Apply"
+ApplySpeed.BackgroundColor3 = Color3.fromRGB(0,255,0)
+ApplySpeed.Position = UDim2.new(0.065,0, 0.32,0)
+ApplySpeed.Font = Enum.Font.FredokaOne
+ApplySpeed.RichText = true
+ApplySpeed.TextScaled = true
+ApplySpeed.TextColor3 = Color3.new(1,1,1)
+
+TeleportText.Name = "TeleportText"
+TeleportText.Text = "Teleport :"
+TeleportText.BackgroundTransparency = 1
+TeleportText.Font = Enum.Font.FredokaOne
+TeleportText.RichText = true
+TeleportText.TextScaled = true
+TeleportText.TextColor3 = Color3.new(1,1,1)
+TeleportText.TextXAlignment = Enum.TextXAlignment.Left
+TeleportText.Size = UDim2.new(0.4,0, 0.1,0)
+TeleportText.Position = UDim2.new(0.5,0, 0.07,0)
+
+BoolTeleport.Name = "BoolTeleport"
+BoolTeleport.Size = UDim2.new(0.27,0, 0.1,0)
+BoolTeleport.Text = "Enable"
+BoolTeleport.BackgroundColor3 = Color3.fromRGB(0,255,0)
+BoolTeleport.Position = UDim2.new(0.51,0, 0.2,0)
+BoolTeleport.Font = Enum.Font.FredokaOne
+BoolTeleport.RichText = true
+BoolTeleport.TextScaled = true
+BoolTeleport.TextColor3 = Color3.new(1,1,1)
+
+-- Credits Texts
+Developer.Name = "Developer"
+Developer.Size = UDim2.new(0.9,0, 0.1,0)
+Developer.Position = UDim2.new(0.05,0, 0.05,0)
+Developer.Text = "Developer :"
+Developer.BackgroundTransparency = 1
+Developer.Font = Enum.Font.FredokaOne
+Developer.RichText = true
+Developer.TextScaled = true
+Developer.TextColor3 = Color3.new(1,1,1)
+Developer.TextXAlignment = Enum.TextXAlignment.Left
+
+me.Name = "me lol"
+me.Size = UDim2.new(0.9,0, 0.1,0)
+me.Position = UDim2.new(0.05,0, 0.2,0)
+me.Text = "cry about it#0110 - UI Desing, Script"
+me.BackgroundTransparency = 1
+me.Font = Enum.Font.FredokaOne
+me.RichText = true
+me.TextScaled = true
+me.TextColor3 = Color3.new(1,1,1)
+me.TextXAlignment = Enum.TextXAlignment.Left
+
+-- Scripting
+local Teleportlink = "https://raw.githubusercontent.com/rbxexploiter/Pet-Simulator-X-Free-Teleport-Hack/main/petsimxtp"
+
+-- Close and Tab Scripting
+MainTab.MouseButton1Click:Connect(function()
+	Main.Visible = false
+	Button.Visible = true
+end)
+
+Button.MouseButton1Click:Connect(function()
+	Main.Visible = true
+	Button.Visible = false
+end)
+
+MainClose.MouseButton1Click:Connect(function()
+	ScreenGui:Destroy()
+end)
+
+-- Tabs Scripting
+HomeTab.MouseButton1Click:Connect(function()
+	Home.Visible = true
+	CreditsHome.Visible = false
+end)
+
+CreditsTab.MouseButton1Click:Connect(function()
+	Home.Visible = false
+	CreditsHome.Visible = true
+end)
+
+-- Home Buttons Scripting
+local Debounce = false
+
+if PlayerGui:WaitForChild("Main"):WaitForChild("Left"):WaitForChild("Tools"):WaitForChild("Teleport") then
+	BoolTeleport.MouseButton1Click:Connect(function()
+		if Debounce == false then
+			Debounce = true
+			BoolTeleport.Text = "Enabled!"
+			BoolTeleport.BackgroundColor3 = Color3.new(1,0,0)
+			loadstring(game:HttpGetAsync(Teleportlink))()
+		end
+	end)
+else
+	Debounce = true
+	BoolTeleport.Text = "Enabled!"
+	BoolTeleport.BackgroundColor3 = Color3.new(1,0,0)
+end
+
+ApplySpeed.MouseButton1Click:Connect(function()
+	Character:WaitForChild("Humanoid").WalkSpeed = tonumber(SpeedBox.Text)
+	SpeedBox.PlaceholderText = "Your Speed " .. tostring(Character:WaitForChild("Humanoid").WalkSpeed)
+end)
+
+-- Created by cry about it#0110
