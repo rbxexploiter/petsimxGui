@@ -288,7 +288,7 @@ if PlayerGui:WaitForChild("Main"):WaitForChild("Left"):WaitForChild("Tools"):Wai
 			loadstring(game:HttpGetAsync(Teleportlink))()
 		end
 	end)
-else
+elseif not PlayerGui:WaitForChild("Main"):WaitForChild("Left"):WaitForChild("Tools"):WaitForChild("Teleport") then
 	Debounce = true
 	BoolTeleport.Text = "Enabled!"
 	BoolTeleport.BackgroundColor3 = Color3.new(1,0,0)
